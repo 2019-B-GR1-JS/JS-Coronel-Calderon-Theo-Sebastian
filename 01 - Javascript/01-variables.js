@@ -1,5 +1,4 @@
 //  JSON
-
 //var nombre=THEO;
 
 //mutable
@@ -71,3 +70,6 @@ console.log(theo);
 console.log("-------------------------");
 delete theo.hijos;
 console.log(theo);
+
+
+
