@@ -1,5 +1,5 @@
 const arreglo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-console.log(Object.keys(arreglo));
+console.log(arreglo);
 
 /****
  * Es preferible utilizar estos for..  Aunque el FOR original sea más rápido
@@ -33,63 +33,103 @@ console.log(Object.keys(arreglo));
 // console.log(arreglo);
 
 
-const respuestaMap = arreglo
-    .map(   //Transformar -> Mutar ARREGLO
-        function (valorActual){
-            return valorActual +5;
+// const respuestaMap = arreglo
+//     .map(   //Transformar -> Mutar ARREGLO
+//         function (valorActual){
+//             return valorActual +5;
+//         }
+//     );  // Devuelve un NUEVO arreglo TRANSFORMADO
+//
+// const respuestaMap2 = arreglo.map(r=>r+5);
+//
+// console.log('respuestaMap',respuestaMap);
+// console.log('respuestaMap2',respuestaMap2);
+// console.log('arreglo',arreglo);
+//
+// const reto = arreglo.map(a=>a>7);
+// console.log('reto',reto);
+//
+// const respuestaFilter = arreglo
+//     .filter(
+//       function (valorActual) {
+//           return valorActual>7;
+//       }
+//     );
+// console.log('respuestaFilter',respuestaFilter);
+//
+// const respuestaFilter2 = arreglo
+//     .filter(
+//         function (valorActual) {
+//             return valorActual>9 && valorActual<12;
+//         }
+//     );
+// console.log('respuestaFilter2',respuestaFilter2);
+//
+// const respuestaSome =  arreglo
+//     .some(
+//       function (valorActual) {
+//           return valorActual>11 && valorActual<12;
+//       }
+//     );
+// console.log('respuestaSome',respuestaSome);
+//
+// const respuestaEvery = arreglo
+//     .every(
+//       function (valorActual) {
+//           return valorActual>1;
+//       }
+//     );
+// console.log('respuestaEvery',respuestaEvery);
+//
+// //  (x/2 + 7 ) ?<10
+//
+// const reto2 = arreglo
+//     .map( x => (x/2)+7).some( y => y<10 );
+//
+// console.log('reto2',reto2);
+//
+// const reto3 = arreglo
+//     .map( x => (x/2)+7).filter( y => y<10 );
+//
+// console.log('reto3',reto3);
+
+
+/*************************************
+ *     CONTINUACION DE LA CLASE ANTERIOR
+ *
+ */
+
+
+// Devuelve el elemento del arreglo, es decir, ocurrencia encontrada:
+
+    const respuestaFind = arreglo.find(
+        (valorActual, indice, arreglo) => {
+            return valorActual === 8;
         }
-    );  // Devuelve un NUEVO arreglo TRANSFORMADO
-
-const respuestaMap2 = arreglo.map(r=>r+5);
-
-console.log('respuestaMap',respuestaMap);
-console.log('respuestaMap2',respuestaMap2);
-console.log('arreglo',arreglo);
-
-const reto = arreglo.map(a=>a>7);
-console.log('reto',reto);
-
-const respuestaFilter = arreglo
-    .filter(
-      function (valorActual) {
-          return valorActual>7;
-      }
     );
-console.log('respuestaFilter',respuestaFilter);
 
-const respuestaFilter2 = arreglo
-    .filter(
-        function (valorActual) {
-            return valorActual>9 && valorActual<12;
+console.log(respuestaFind);
+
+// Devuelve el valor del arreglo en el índice indicado:
+
+    const respuestaFindIndex = arreglo.findIndex(
+        (valorActual) => {
+            return valorActual === 8;
         }
     );
-console.log('respuestaFilter2',respuestaFilter2);
 
-const respuestaSome =  arreglo
-    .some(
-      function (valorActual) {
-          return valorActual>11 && valorActual<12;
-      }
-    );
-console.log('respuestaSome',respuestaSome);
+console.log(respuestaFindIndex);
 
-const respuestaEvery = arreglo
-    .every(
-      function (valorActual) {
-          return valorActual>1;
-      }
-    );
-console.log('respuestaEvery',respuestaEvery);
+// Reduce el arreglo a un valor según la condicion indicada:
 
-//  (x/2 + 7 ) ?<10
+const respuestaReduce=
+    arreglo
+        .reduce(
+            (valorInicial, valorActual, indice, array)=> {
+                return valorInicial + valorActual;
+            }
+        );
 
-const reto2 = arreglo
-    .map( x => (x/2)+7).some( y => y<10 );
+console.log(respuestaReduce);
 
-console.log('reto2',reto2);
-
-const reto3 = arreglo
-    .map( x => (x/2)+7).filter( y => y<10 );
-
-console.log('reto3',reto3);
 
