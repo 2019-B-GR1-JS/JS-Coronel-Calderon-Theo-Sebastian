@@ -131,14 +131,15 @@ console.log( 'FIND IND: ',
 
 
 function ReduceLocal(arreglo, funcion){
+    let value;
     for(let i = 0; i<arreglo.length; i++){
-
+         value = funcion(arreglo[0],arreglo[i])
     }
-    return ;
+    return value;
 }
 
 console.log( 'REDUCE: ',
-    ReduceLocal(arregloPuro,(valorIndice)=>{
-        return valorIndice==8;
+    ReduceLocal(arregloPuro,(valorInicial, valorActual)=>{
+        return valorInicial + valorActual;
     })
 );
