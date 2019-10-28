@@ -1,3 +1,5 @@
+/*************************************************** 04-funciones****/
+
 function imprimirMensaje(mensaje) {
     if (typeof mensaje === 'string' || typeof mensaje === 'number') {
         // console.log(`Mensaje ${mensaje}` );

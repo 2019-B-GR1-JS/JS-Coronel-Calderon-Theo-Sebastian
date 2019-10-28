@@ -1,3 +1,5 @@
+/*************************************************** 02-objetos ****/
+
 //  let const
 // deben ser INMUTABLES!  sig
 
