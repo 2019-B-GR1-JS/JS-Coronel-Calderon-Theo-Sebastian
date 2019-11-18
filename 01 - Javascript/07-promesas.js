@@ -115,7 +115,7 @@ async function leerArchivoSync(){
 
 //TODA FUNCION QUE TENGA ASYNC SE TRANSFORMA EN UNA PROMESA
 
-leerArchivoSync.then(
+leerArchivoSync().then(
     (numero)=>{
         console.log(numero);    //1
 
