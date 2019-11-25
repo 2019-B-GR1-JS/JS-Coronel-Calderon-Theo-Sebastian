@@ -1,10 +1,20 @@
 
-<h1>TITULO</h1>
-<img width="200px"
-     height="200px"
-     src="http://www.estudiantes.info/ciencias_naturales/images/leonesbebe.jpg"
-     alt="">
-<p>Texto</p>
-<button (click)="saludar()">
-  Hola
+<h1>{{titulo}}</h1>
+<!--{{}} INTERPOLACION -->
+<!-- Mostra HTML -->
+<!-- Acceder a metodos y propiedades de la clase -->
+
+<img [width]="valueW"
+[height]="valueH"
+[src]="imagen"
+alt="">
+<!-- Property Binding      -->
+<!-- [atributo]="valor" -> Atributos -->
+
+<p>{{textoImagen}}</p>
+
+<!-- Event Biding -->
+<!-- [evento] = "miFuncion($event)"  -> Evento -->
+<button  (click)="aumentarSueldo()">
+  {{textoBoton}}
 </button>
