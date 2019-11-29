@@ -22,11 +22,6 @@ export class MiPrimerComponenteComponent implements OnInit, OnDestroy {
   public textoImagen:string;
 
   @Input()
-  public valueW:number=200;
-  @Input()
-  public valueH:number=200;
-
-  @Input()
   public textoBoton:string;
 
   @Output()
@@ -53,17 +48,78 @@ export class MiPrimerComponenteComponent implements OnInit, OnDestroy {
     alert("HOLAAAAAAA");
   }
 
+  tamanoImagen = 200;
+  valorA:number = 0;
+  valorB:number = 0;
+  totalSuma:number = 0;
+  totalResta:number = 0;
+  totalMultip:number = 0;
+  totalDiv:number = 0;
 
-  aumentarTamano(){
-    this.valueH +=1;
-    this.valueW +=1;
+
+  sumarNumeros(){
+    this.totalSuma=this.valorA+this.valorB;
+    console.log('SUMA: ' + this.totalSuma);
+    // return  + this.funcionB(event);
+  }
+
+  restarNumeros(){
+    this.totalResta=this.valorA - this.valorB;
+    console.log('RESTA: ' + this.totalResta);
+    // return a+b;
+  }
+
+  multiplicarNumeros(){
+    this.totalMultip= this.valorA * this.valorB;
+    console.log('MULT: ' + this.totalMultip);
+    // return a+b;
+  }
+
+  dividirNumeros(){
+    this.totalDiv=this.valorA / this.valorB;
+    console.log('DIV: ' + this.totalDiv);
+  }
+
+  guardarValorA(valor:number){
+    this.valorA=valor;
+    console.log(this.valorA);
+  }
+
+  funcionChangeA(event){
+    const valor = event.srcElement.value;
+    console.log(valor);
+    this.guardarValorA(Number(valor));
+
+    this.sumarNumeros();
+    this.restarNumeros();
+    this.multiplicarNumeros();
+    this.dividirNumeros();
+    // return Number(valor);
+  }
+
+  guardarValorB(valor:number){
+    this.valorB=valor;
+    // console.log(this.valorA);
+  }
+
+  funcionChangeB(event){
+    const valor = event.srcElement.value;
+    console.log(valor);
+    this.guardarValorB(Number(valor));
+    // return Number(valor);
+
+    this.sumarNumeros();
+    this.restarNumeros();
+    this.multiplicarNumeros();
+    this.dividirNumeros();
   }
 
   aumentarSueldo(){
     // this.textoBoton = (Number(this.textoBoton )+ 1).toString();
     this.textoBoton = (+this.textoBoton + 1).toString();
     this.cambioSueldo.emit(this.textoBoton);
-    this.aumentarTamano();
+    this.tamanoImagen = this.tamanoImagen + 10;
+
   }
 
 }

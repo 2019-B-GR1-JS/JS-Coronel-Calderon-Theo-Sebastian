@@ -4,12 +4,38 @@
 <!-- Mostra HTML -->
 <!-- Acceder a metodos y propiedades de la clase -->
 
-<img [width]="valueW"
-[height]="valueH"
+<img [width]="tamanoImagen "
+[height]="tamanoImagen"
 [src]="imagen"
 alt="">
+
+<p></p>
+<p></p>
 <!-- Property Binding      -->
 <!-- [atributo]="valor" -> Atributos -->
+<input type="text" value="0" (change)="funcionChangeA($event)">
+<button  (click)="sumarNumeros()">
+  +
+</button>
+<button  (click)="restarNumeros()">
+  -
+</button>
+<button  (click)="multiplicarNumeros()">
+  *
+</button>
+<button  (click)="dividirNumeros()">
+  /
+</button>
+
+<input type="text" value="0" (change)="funcionChangeB($event)">
+
+<p>---------</p>
+<p>SUMA: {{totalSuma}} </p>
+<p>RESTA = {{totalResta}}</p>
+<p> MULTI = {{totalMultip}} </p>
+<p>DIV = {{totalDiv}} </p>
+
+<p>---------</p>
 
 <p>{{textoImagen}}</p>
 
