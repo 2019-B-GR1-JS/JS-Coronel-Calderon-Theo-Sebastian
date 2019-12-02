@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  fecha = new Date();
+  sueldo = 12.001;
+  universidad = 'EPN';
+
   title = 'componentes';
 
   arregloObjetos = [

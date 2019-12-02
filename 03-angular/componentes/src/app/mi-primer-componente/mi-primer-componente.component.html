@@ -13,7 +13,7 @@ alt="">
 <p></p>
 <!-- Property Binding      -->
 <!-- [atributo]="valor" -> Atributos -->
-<input type="text" value="0" (change)="funcionChangeA($event)">
+<input type="number" value="0" (change)="funcionChangeA($event)">
 <button  (click)="sumarNumeros()">
   +
 </button>
@@ -27,7 +27,7 @@ alt="">
   /
 </button>
 
-<input type="text" value="0" (change)="funcionChangeB($event)">
+<input type="number" value="0" (change)="funcionChangeB($event)">
 
 <p>---------</p>
 <p>SUMA: {{totalSuma}} </p>

@@ -5,9 +5,45 @@
 </style>
 <h1>INICIO</h1>
 
-<valores-prueba>
-  [totalSuma]=""
-</valores-prueba>
+<h2>PIPES!</h2>
+{{fecha | date:'yyyy/MM/dd'}}
+{{sueldo | currency}}
+{{universidad | titlecase}}
+
+
+<h2>Directivas!</h2>
+
+<p *ngIf="true">SI</p>
+
+<p *ngIf="false">NO</p>
+
+<div [hidden]="true">ESTOY OCULTO NO ELIMINADO </div>
+
+<ul>
+  <li *ngFor="let nombreVariable of arregloObjetos">
+    <button>a</button>
+    <a href="">LINK</a>
+    <p>HEEEEY</p>
+    <p>{{nombreVariable.nombre}}</p>
+
+    <app-mi-primer-componente
+      [titulo]="nombreVariable.apellido"
+      [textoImagen]="nombreVariable.nombre"
+      [textoBoton]="nombreVariable.sueldo.toString()"
+      [imagen]="nombreVariable.comida"
+      (cambioSueldo)="imprimirSueldo($event)"
+    ></app-mi-primer-componente>
+
+
+
+  </li>
+<!--  <li>ITEMS2</li>-->
+<!--  <li>ITEMS3</li>-->
+</ul>
+
+
+
+
 
 <app-mi-primer-componente
   [titulo]="arregloObjetos[0].apellido"
