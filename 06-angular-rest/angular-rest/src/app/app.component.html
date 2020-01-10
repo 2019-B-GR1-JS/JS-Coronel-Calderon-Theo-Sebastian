@@ -1,0 +1,40 @@
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Correo</th>
+    <th>Password</th>
+    <th>ACCIONES</th>
+  </tr>
+
+  <tr *ngFor="let usuario of usuarios">
+    <td> {{usuario.nombre}}</td>
+    <td> {{usuario.apellido}}</td>
+    <td> {{usuario.correo}}</td>
+    <td> {{usuario.password}}</td>
+    <td>
+      <p-button label="EDITAR" colo (click)="editar(usuario)">
+      </p-button>
+
+      <p-button label="ELIMINAR" (click)="eliminar(usuario)">
+      </p-button>
+    </td>
+  </tr>
+</table>
+
+
+
+
+<div *ngFor="let usuario of usuarios">
+  <p>Nombre: {{usuario.nombre}}</p>
+  <p>Apellido: {{usuario.apellido}}</p>
+  <p>Correo: {{usuario.correo}}</p>
+  <p>Password: {{usuario.password}}</p>
+</div>
+
+
+
+
+<router-outlet></router-outlet>
+
