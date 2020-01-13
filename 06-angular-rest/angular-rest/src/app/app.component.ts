@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import { FILAS } from './constantes/numero-filas-por-tabla';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,11 @@ export class AppComponent implements OnInit {
   }
 
   usuarios=[];
+  FILAS= FILAS;
+  nombreFiltrado='';
+  apellidoFiltrado='';
+  correoFiltrado='';
+  passwordFiltrado='';
 
   ngOnInit(): void {
     const urlUsuarios = this.url + '/usuario';
@@ -50,6 +56,22 @@ export class AppComponent implements OnInit {
 
   eliminar(usuario){
     console.log('Eliminando usuario ', usuario);
+  }
+
+  usuariosFiltrados(){
+
+    return this.usuarios.filter(
+      (usuario)=>{
+        if(
+          !usuario.nombre.toLowerCase().includes(this.nombreFiltrado.toLowerCase()) ||
+          !usuario.apellido.toLowerCase().includes(this.apellidoFiltrado.toLowerCase()) ||
+          !usuario.correo.toLowerCase().includes(this.correoFiltrado.toLowerCase()) ||
+          !usuario.password.toLowerCase().includes(this.passwordFiltrado.toLowerCase())
+        ) return false;
+        return true;
+      }
+    );
+
   }
 
 }
