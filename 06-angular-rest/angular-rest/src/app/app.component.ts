@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import { FILAS } from './constantes/numero-filas-por-tabla';
+import {FILAS} from './constantes/numero-filas-por-tabla';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {ModalEditarUsuarioComponent} from "./modales/modal-editar-usuario/modal-editar-usuario.component";
+import {UsuarioRestService} from "./services/rest/usuario-rest.service";
 
 @Component({
   selector: 'app-root',
@@ -13,17 +16,19 @@ export class AppComponent implements OnInit {
 
   //  DEPENDENCIAS SON SERVICIOS!!!!!
   constructor(
-    private readonly _httpCLient: HttpClient
+    private readonly _httpCLient: HttpClient,
+    private readonly _matDialog: MatDialog,
+    private readonly _usuarioRestService: UsuarioRestService,
   ) {
     //CASI NUNCA DEBE HABER CODIGO ->  ESTAS SON CONFIGURACIONES QUE CASI NUNCA SE DEBE HACER
   }
 
-  usuarios=[];
-  FILAS= FILAS;
-  nombreFiltrado='';
-  apellidoFiltrado='';
-  correoFiltrado='';
-  passwordFiltrado='';
+  usuarios = [];
+  FILAS = FILAS;
+  nombreFiltrado = '';
+  apellidoFiltrado = '';
+  correoFiltrado = '';
+  passwordFiltrado = '';
 
   ngOnInit(): void {
     const urlUsuarios = this.url + '/usuario';
@@ -42,7 +47,7 @@ export class AppComponent implements OnInit {
         (error) => {
           console.error(
             {
-              error:error,
+              error: error,
               mensaje: 'Error consultandodatos'
             }
           )
@@ -50,19 +55,71 @@ export class AppComponent implements OnInit {
       )
   }
 
-  editar(usuario){
+  editar(usuario) {
     console.log('Editando usuario ', usuario);
+
+    const matDialogRefModalEditarUsuario = this._matDialog
+      .open(
+        ModalEditarUsuarioComponent,
+        {
+          width: '250px',
+          data: {
+            usuario,
+            // usuario: usuario,       Viene a ser lo mismo
+          }
+        }
+      );
+    const respuestaDialogo$ = matDialogRefModalEditarUsuario.afterClosed();
+
+    respuestaDialogo$.subscribe(
+      (datos) => {  //try
+        console.log('Datos: ', datos);
+        if (datos) {
+          this.editarUsuarioHTTP(usuario.id, datos);
+        } else {
+          //undefined
+        }
+      },
+      (error) => {  //catch
+        console.log('Error: ', error);
+      }
+    );
   }
 
-  eliminar(usuario){
+  editarUsuarioHTTP(id: number, datos) {
+    const usuarioEditado$ = this._usuarioRestService
+      .editar(id, datos);
+    usuarioEditado$
+      .subscribe(
+        (usuarioEditado: any) => {
+          console.log(usuarioEditado);
+          const indice = this.usuarios
+            .findIndex(
+              (usuario) => {
+                return usuario.id === id;
+              }
+            );
+          this.usuarios[indice].nombre = datos.nombre;
+          this.usuarios[indice].apellido = datos.apellido;
+          this.usuarios[indice].correo = datos.correo;
+          this.usuarios[indice].password = datos.password;
+
+        },
+        (error) => {
+          console.error(error);
+        }
+      )
+  }
+
+  eliminar(usuario) {
     console.log('Eliminando usuario ', usuario);
   }
 
-  usuariosFiltrados(){
+  usuariosFiltrados() {
 
     return this.usuarios.filter(
-      (usuario)=>{
-        if(
+      (usuario) => {
+        if (
           !usuario.nombre.toLowerCase().includes(this.nombreFiltrado.toLowerCase()) ||
           !usuario.apellido.toLowerCase().includes(this.apellidoFiltrado.toLowerCase()) ||
           !usuario.correo.toLowerCase().includes(this.correoFiltrado.toLowerCase()) ||
