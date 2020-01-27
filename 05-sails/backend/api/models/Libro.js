@@ -1,31 +1,24 @@
 /**
- * Usuario.js
+ * Libro.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
+//sails generate api Libro
 module.exports = {
 
   attributes: {
-    nombre:{
+    nombre: {
       type: 'string'
     },
-    apellido:{
+    isbn: {
       type: 'string'
     },
-    password:{
-      type: 'string'
-    },
-    correo:{
-      type: 'string'
-    },
-
-    libros:{
-      collection: 'libro',    //Nombre del model hijo
-      via: 'idUsuario'        //Nombre del campo Foreign Key en la tabla hijo
+    idUsuario: {
+      model: 'usuario',    //Nombre del modelo padre
+      required: true
     }
-
   },
 
 };
