@@ -18,7 +18,6 @@ export class EstaLogeadoPolicy implements CanActivate{
     /*if(this._authService.sesion.rol === 'Administrador') return  true;
     else return false;*/
 
-    
     return this._authService.estaLoggeado;
   }
 

@@ -24,6 +24,8 @@ const routes: Routes = [
     component: RutaGestionUsuariosComponent,
     canActivate: [
       EstaLogeadoPolicy,
+      //EsAdministrador,
+      //EsUsuario
     ]
   },
   {
