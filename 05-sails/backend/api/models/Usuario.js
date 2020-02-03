@@ -20,6 +20,9 @@ module.exports = {
     correo:{
       type: 'string'
     },
+    rol:{
+      type: 'string'
+    },
 
     libros:{
       collection: 'libro',    //Nombre del model hijo

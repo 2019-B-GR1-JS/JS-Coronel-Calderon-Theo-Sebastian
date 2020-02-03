@@ -104,6 +104,7 @@ export class RutaGestionUsuariosComponent implements OnInit {
           this.usuarios[indice].apellido = datos.apellido;
           this.usuarios[indice].correo = datos.correo;
           this.usuarios[indice].password = datos.password;
+          this.usuarios[indice].rol = datos.rol;
 
         },
         (error) => {
