@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Nuevo juego
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content>
+      <form  #form="ngForm" (ngSubmit)="newBook(form)">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="10" size-lg="8" size-xs="12">
+              <div text-center>
+                <h3>Datos del Juego</h3>
+              </div>
+              <div padding>
+                <ion-item>
+                  <ion-input id="name" name="name" type="text" placeholder="Nombre del juego" [(ngModel)]="name" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input id="pageNumber" name="pageNumber" type="number" placeholder="Edicion del juego" [(ngModel)]="edition" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  $
+                  <ion-input id="precio" name="precio" type="decimal" placeholder="Valor del juego" [(ngModel)]="precio" required></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-input id="editorialName" name="editorialName" type="text" placeholder="Estilo del juego" [(ngModel)]="estilo" required></ion-input>
+                </ion-item>
+              </div>
+              <div padding>
+                <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Ingresar</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+    
+    
+    </ion-content>  
